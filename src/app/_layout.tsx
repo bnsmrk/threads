@@ -12,7 +12,7 @@ export default function RootLayout() {
     },
   };
   return (
-    <ThemeProvider value={DarkTheme}>
+    <ThemeProvider value={myTheme}>
       <Slot />
     </ThemeProvider>
   );
