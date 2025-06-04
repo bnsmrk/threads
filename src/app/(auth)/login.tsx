@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { Link } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -9,20 +10,26 @@ export default function LoginScreen() {
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async () => {
-    setLoading(true);
     setError(null);
-    // Simulate login logic
-    setTimeout(() => {
-      if (email === "" || password === "") {
-        setError("Email and password are required.");
-      } else {
-        // Success logic here
-        setError(null);
+    if (!email || !password) {
+      setError("Email and password are required.");
+      return;
+    }
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        setError(error.message);
       }
+    } catch (error: any) {
+      setError(error.message || "An unexpected error occurred.");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
-
   return (
     <View className="flex-1 justify-center px-6 bg-black">
       <Text className="text-3xl font-bold text-white mb-8 text-center">
