@@ -19,7 +19,7 @@ export default function PostListItem({ post }: { post: Post }) {
           <Text className="text-gray-500">@{post.user.username}</Text>
 
           <Text className="text-white font-bold mr-2">
-            {dayjs(post.createdAt).fromNow()}
+            {dayjs(post.created_at).fromNow()}
           </Text>
         </View>
         <Text className="text-white mt-2 mb-3">{post.content}</Text>

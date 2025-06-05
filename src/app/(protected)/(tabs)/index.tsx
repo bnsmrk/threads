@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { ActivityIndicator, FlatList, Text } from "react-native";
 import PostListItem from "../../../components/PostListItem";
+
 export default function HomeScreen() {
-  // const [posts, setPosts] = useState<Post[]>([]);
   const fetchPosts = async () => {
     const { data, error } = await supabase
       .from("posts")
