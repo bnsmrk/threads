@@ -5,7 +5,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { Image, Pressable, Text, View } from "react-native";
 dayjs.extend(relativeTime);
 export default function PostListItem({ post }: { post: Post }) {
-  console.log(post.user);
   return (
     <View className="flex-row p-4 border-b border-gray-800/70">
       <View className="mr-3">
