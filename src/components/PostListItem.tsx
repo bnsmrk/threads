@@ -4,12 +4,13 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Image, Pressable, Text, View } from "react-native";
 dayjs.extend(relativeTime);
-export default function PostLitstItem({ post }: { post: Post }) {
+export default function PostListItem({ post }: { post: Post }) {
+  console.log(post.user);
   return (
     <View className="flex-row p-4 border-b border-gray-800/70">
       <View className="mr-3">
         <Image
-          source={{ uri: post.user.image }}
+          source={{ uri: post.user.avatar_url }}
           className="w-12 h-12 rounded-full"
         />
       </View>
@@ -26,7 +27,7 @@ export default function PostLitstItem({ post }: { post: Post }) {
         <View className="flex-row gap-4 mt-2">
           <Pressable className="flex-row items-center">
             <Ionicons name="heart-outline" size={20} color="#d1d5db" />
-            <Text className="text-gray-300 ml-2">{post.replies.length}</Text>
+            <Text className="text-gray-300 ml-2">{0}</Text>
           </Pressable>
           <Pressable className="flex-row items-center">
             <Ionicons name="chatbubble-outline" size={16} color="#d1d5db" />
